@@ -1,0 +1,177 @@
+@import "compass"
+
+html
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-font-smoothing: antialiased
+  font-smoothing: antialiased
+img
+  max-width: 100%
+// AP
+.ap-text-left
+  text-align: left
+.ap-text-center
+  text-align: center
+.ap-text-right
+  text-align: right
+.ap-no-data-message
+  text-align: center
+  opacity: 0.65
+  margin: 0.5em 0 1em 0
+// carousel
+.ap-carousel
+  $carousel-height: 220px
+  $tablet-portrait-carousel-height: 500px
+  $tablet-landscape-carousel-height: 450px
+  .ap-no-data-message
+    color: #000
+  .ap-carousel-container
+    overflow: hidden
+    position: relative
+    min-height: $carousel-height
+    height: $carousel-height
+    +adjust-font-size-to(14px)
+    line-height: 1.25
+    text-align: center
+    color: #FFF
+    background-color: #FFF
+    .ap-carousel-slider
+      position: absolute
+      top: 0
+      left: 0
+      width: 25000px
+      +single-transition(left, 0.3s)
+  .ap-carouselitem
+    cursor: pointer
+    position: relative
+    float: left
+    min-height: $carousel-height
+    height: $carousel-height
+    .ap-carouselitem-image
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background-size: contain
+      background-repeat: no-repeat
+      background-position: 50% 50%
+      background-color: #000
+    .ap-carouselitem-title
+      font-weight: bold
+    .ap-carouselitem-detail
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      padding: 6px 0
+      +background(linear-gradient(top center, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65) 40%))
+  // tablets (portrait)
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)
+    .ap-carousel-container
+      height: $tablet-portrait-carousel-height
+    .ap-carouselitem
+      height: $tablet-portrait-carousel-height
+  // tablets (landscape)
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)
+    .ap-carousel-container
+      height: $tablet-landscape-carousel-height
+    .ap-carouselitem
+      height: $tablet-landscape-carousel-height
+// chart
+.ap-chart-container
+  padding: 10px 0 0 0
+  .ap-chart-title
+    font-weight: bold
+  svg
+    min-height: 350px
+    margin-bottom: 10px
+.ap-form
+  max-width: 400px
+  margin: 0 auto
+  .ap-field-image
+    display: block
+    max-height: 200px
+    margin: 1em auto
+  .ap-field
+    padding: 0.5em 0
+.form-actions
+  margin: 1em 0
+.ap-horizontalrule
+  hr
+    max-width: 100%
+    height: 3px
+    border: 0
+    background-color: #444
+.ap-image
+  img
+    display: block
+    max-width: 100%
+    margin: 0 auto
+.ap-listitem
+  overflow: hidden
+  .ui-btn-inner
+    overflow: hidden
+.ui-li-desc
+  overflow: hidden
+  text-overflow: ellipsis
+.ap-list-text
+  display: block
+  max-width: 85%
+.ap-mappage
+  .ui-content
+    > *
+      position: relative
+      z-index: 10
+    > .ap-map
+      position: static
+      .ap-map-container
+        position: absolute
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+        margin-top: 42px
+
+.ap-content
+  margin: 0.5em 0
+
+// footer icons
+.ui-footer
+  .fa
+    display: block
+  .ui-btn-icon-top
+    padding: 0.7em 1em
+  .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after
+    display: none
+
+// jQuery UI
+.ui-page
+  background: #FFF
+.ui-header, .ui-footer
+  border: 0
+.ui-title
+  font-weight: normal
+.ui-footer .ui-navbar li .ui-btn
+  border: 0
+  font-weight: normal
+form > .form-actions, .ui-header, .ui-content, .ui-datebox-container, .ap-authenticationbutton, .ap-pagebutton, .ap-urlbutton
+  a.ui-btn, a.ui-btn.ui-link
+    border-color: transparent
+    font-weight: normal
+    &:after
+      background-color: transparent
+.ui-input-datebox
+  width: 53%
+  .ui-btn-icon-notext
+    right: -50px
+.ui-content .ui-listview, .ui-panel-inner > .ui-listview
+  margin: 0 -15px
+.ui-content .ui-listview-inset, .ui-panel-inner > .ui-listview-inset
+  margin: 0
+// disabled buttons
+.btn-disable
+  opacity: 0.5
+// remove text shadow
+*
+  text-shadow: none !important  // poor practice, but necessary for now
