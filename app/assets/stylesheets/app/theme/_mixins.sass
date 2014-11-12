@@ -1,0 +1,118 @@
+@import "compass"
+
+
+// ========== fonts ==========
+@mixin fonts($size: null, $bold: false, $italic: false, $underline: false, $align: null, $color: null)
+  @if $size
+    font-size: #{$size}px
+  @if $bold
+    font-weight: bold
+  @if $italic
+    font-style: italic
+  @if $underline
+    text-decoration: underline
+  @if $align and $align == 'Left'
+    $align: left
+  @if $align and $align == 'Center'
+    $align: center
+  @if $align and $align == 'Right'
+    $align: right
+  @if $align
+    text-align: $align
+  @if $color
+    color: $color
+
+
+// ========== borders ==========
+@mixin borders($color: null, $radius: null, $width: null)
+  @if $color
+    border-color: $color
+    border-style: solid
+    border-width: 1px
+  @if $radius
+    +border-radius(#{$radius}px)
+  @if $width
+    border-style: solid
+    border-width: #{$width}px
+
+
+// ========== backgrounds ==========
+@mixin bg-color($color: null)
+  @if $color
+    color: contrast-color($color, #111, #FFF, 50%)
+    background-color: $color
+    background-image: none
+
+@mixin bg-image($start_color: null, $end_color: null, $transparent: false, $url: null)
+  @if $url
+    background-image: url($url)
+    background-repeat: no-repeat
+    @if $start_color and $end_color and $transparent == false
+      background-image: url($url), -webkit-gradient(linear, left top, left bottom, from($start_color), to($end_color))
+      background-image: url($url), -webkit-linear-gradient(top, $start_color, $end_color)
+      background-image: url($url), -moz-linear-gradient(top, $start_color, $end_color)
+      background-image: url($url), -ms-linear-gradient(top, $start_color, $end_color)
+      background-image: url($url), -o-linear-gradient(top, $start_color, $end_color)
+      background-image: url($url), linear-gradient(top, $start_color, $end_color)
+  @else
+    @if $start_color and $end_color and $transparent == false
+      background-image: -webkit-gradient(linear, left top, left bottom, from($start_color), to($end_color))
+      background-image: -webkit-linear-gradient(top, $start_color, $end_color)
+      background-image: -moz-linear-gradient(top, $start_color, $end_color)
+      background-image: -ms-linear-gradient(top, $start_color, $end_color)
+      background-image: -o-linear-gradient(top, $start_color, $end_color)
+      background-image: linear-gradient(top, $start_color, $end_color)
+
+@mixin bg-transparency($transparent: false)
+  @if $transparent == true
+    background-image: none
+    background-color: transparent
+
+@mixin bg-repeat($repeat: false)
+  @if $repeat
+    background-repeat: repeat
+
+@mixin bg-position($hpos: null, $vpos: null)
+  $percent: '%'
+  @if $vpos
+    background-position: 0 $vpos#{$percent}
+  @if $hpos
+    background-position: $hpos#{$percent} 0
+  @if $hpos and $vpos
+    background-position: $hpos#{$percent} $vpos#{$percent}
+
+@mixin bg-size($size: false)
+  @if $size
+    +background-size(contain)
+
+// primary mix-in for backgrounds
+// combines all above
+@mixin backgrounds($color: null, $start_color: null, $end_color: null, $url: null, $repeat: false, $hpos: null, $vpos: null, $size: false, $transparent: false)
+  +bg-color($color)
+  +bg-transparency($transparent)
+  +bg-image($start_color, $end_color, $transparent, $url)
+  +bg-repeat($repeat)
+  +bg-position($hpos, $vpos)
+  +bg-size($size)
+
+@mixin width($size: null, $units: 'px')
+  @if $units and $units == 'Percent'
+    $units: '%'
+  @if $units and $units == 'Pixels'
+    $units: 'px'
+  @if $size == 100 and $units == '%'
+    // 100% width
+  @else if $size
+    margin-left: auto
+    margin-right: auto
+    width: $size#{$units}
+
+@mixin height($size: null, $units: 'px')
+  @if $units and $units == 'Percent'
+    $units: '%'
+  @if $units and $units == 'Pixels'
+    $units: 'px'
+  @if $size == 100 and $units == '%'
+    // 100% height
+  @else if $size
+    height: $size#{$units}

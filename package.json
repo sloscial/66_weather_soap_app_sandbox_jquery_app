@@ -1,0 +1,26 @@
+{
+  "name": "WeatherSoapApp",
+  "description": null,
+  "version": "0.0.1",
+  "dependencies": {
+    "dotenv": "",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.8",
+    "grunt-templater": "~0.0.4",
+    "mustache": "~0.7.2",
+    "grunt-contrib-clean": "",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-sass": "~0.4.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-compress": "~0.5.2",
+    "grunt-manifest": "0.4.0",
+    "phantomjs": "1.9",
+    "grunt-casperjs": "1.0.4",
+    "grunt-contrib-watch": "~0.4.0",
+    "d3": "~3.3.11",
+    "grunt-aws-s3": ""
+  }
+}
